@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+
+  log_server:
+    build: ./log_management_system/
+    ports:
+      - "3000:3000"
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - ELASTICSEARCH_INDEX=logs
+      - DJANGO_SECRET_KEY=changeme
+      - DEBUG_MODE=FALSE

@@ -1,0 +1,7 @@
+env
+elasticsearch
+
+log_management_system/__pycache__
+log_management_system/*/__pycache__
+log_management_system/*/*/__pycache__
+log_management_system/*/*/*/__pycache__

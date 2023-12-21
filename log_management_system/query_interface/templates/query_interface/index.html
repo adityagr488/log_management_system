@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log Management System</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- CodeMirror CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css"
+    />
+    <!-- CodeMirror Theme -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/dracula.min.css"
+    />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="{% static 'query_interface/css/styles.css' %}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <span class="navbar-brand mb-0 h1"
+        >Log Management System - Query Interface</span
+      >
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Left Half - Query Input -->
+        <div class="col-md-6">
+          <div class="mt-4">
+            <h5>Enter your query (JSON):</h5>
+            <div id="queryInput" class="scrollable-half"></div>
+          </div>
+          <button class="btn btn-primary mt-2" onclick="executeQuery()">
+            Execute Query
+          </button>
+          <button class="btn btn-secondary mt-2" onclick="resetQuery()">
+            Reset
+          </button>
+        </div>
+
+        <!-- Right Half - Response Display -->
+        <div class="col-md-6">
+          <div class="mt-4">
+            <h5 id="responseCode">Response Status:</h5>
+            <div id="queryResponse" class="scrollable-half"></div>
+          </div>
+          <button class="btn btn-primary mt-2" onclick="clearResponse()">
+            Clear Response
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <!-- JSON mode for CodeMirror -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
+    <!-- Your custom script for handling queries -->
+    {% load static %}
+    <script src="{% static 'query_interface/js/index.js' %}"></script>
+  </body>
+</html>
