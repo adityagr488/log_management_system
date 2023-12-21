@@ -87,7 +87,7 @@ _There are two ways of installation:_
 1. Clone the respository
 
 ```sh
-git clone https://github.com/dyte-submissions/log_management_system.git
+git clone https://github.com/adityagr488/log_management_system.git
 ```
 
 2. Go to the folder containing the `docker-compose.yml` file.
@@ -178,7 +178,9 @@ curl -X PUT "http://localhost:9200/<your_index_name>" -H 'Content-Type: applicat
 - **_Note_**:
   - Postman and Thunder client can also be used.
 
-6. Go to `http://localhost:3000/docs` to access the Swagger UI docs.
+6. Go to `http://localhost:3000` to access the Query Interface UI.
+
+7. Go to `http://localhost:3000/docs` to access the Swagger UI docs.
 
 #### Manual Installation
 
@@ -189,7 +191,7 @@ curl -X PUT "http://localhost:9200/<your_index_name>" -H 'Content-Type: applicat
 3. Clone the respository
 
 ```sh
-git clone https://github.com/dyte-submissions/log_management_system.git
+git clone https://github.com/log_management_system.git
 ```
 
 4. Manually update the elasticsearch host, port and index in the elastic_config.py file or set them using environment variables.
@@ -197,7 +199,7 @@ git clone https://github.com/dyte-submissions/log_management_system.git
 - Go to the `log_ingestor` folder, open the `elastic_config.py` file.
 
 ```sh
-cd log_management_system/log_ingestor/
+cd log_management_system/log_management_system/log_ingestor/
 ```
 
 - Update the following values:
@@ -220,17 +222,15 @@ export ELASTICSEARCH_INDEX=(your index name)
 
 5. Go to the folder containing the `manage.py` file
 
-```sh
-cd log_management_system/
-```
-
 6. Start the server
 
 ```sh
 python manage.py runserver 3000
 ```
 
-7. Go to `http://localhost:3000/docs` to access the Swagger UI docs.
+7. Go to `http://localhost:3000` to access the Query Interface UI.
+
+8. Go to `http://localhost:3000/docs` to access the Swagger UI docs.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
