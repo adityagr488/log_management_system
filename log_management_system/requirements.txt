@@ -1,6 +1,7 @@
 django
 djangorestframework
 django-cors-headers
-elasticsearch
+elasticsearch==7.8
 gunicorn
 drf-spectacular
+certifi

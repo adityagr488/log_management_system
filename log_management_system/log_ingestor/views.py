@@ -31,7 +31,7 @@ class LogIngestor(generics.CreateAPIView):
 
             ES = getESobject()
 
-            res = ES.index(index=ELASTICSEARCH_INDEX, document=log_entry)
+            res = ES.index(index=ELASTICSEARCH_INDEX, body=log_entry)
 
             if res["result"] != "created":
                 logging.error(

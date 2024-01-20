@@ -8,7 +8,7 @@ import datetime
 import logging
 
 from query_interface.serializers import QuerySerializer
-from log_ingestor.elastic_config import getESobject, ELASTICSEARCH_INDEX
+from log_ingestor.elastic_config import getESobject, ELASTICSEARCH_HOST, ELASTICSEARCH_INDEX
 from log_ingestor.serializers import LogEntrySerializer
 
 
@@ -70,7 +70,7 @@ def prepareQuery(request_payload):
 
             must_query.append(query)
 
-        query = {"bool": {"must": must_query}}
+        query = {"query": {"bool": {"must": must_query}}}
         return query
     except Exception:
         raise
@@ -103,7 +103,7 @@ class QueryInterface(generics.CreateAPIView):
             ES = getESobject()
 
             raw_response = ES.search(
-                index=ELASTICSEARCH_INDEX, size=result_size, query=query
+                index=ELASTICSEARCH_INDEX, size=result_size, body=query
             )
 
             formatted_response = format_response(raw_response)
@@ -116,20 +116,22 @@ class QueryInterface(generics.CreateAPIView):
                     request_payload.errors, status=status.HTTP_400_BAD_REQUEST
                 )
 
-            elif isinstance(e, ValueError):
+            if isinstance(e, ValueError):
                 return Response(
                     {"msg": e.args},
                     status=status.HTTP_400_BAD_REQUEST,
                 )
 
-            elif isinstance(e, ConnectionError):
-                logging.error(e.message)
+            if isinstance(e, ConnectionError):
+                message = f"Unable to reach Elasticsearch Host"
 
             elif isinstance(e, NotFoundError):
-                logging.error(f"Index not found: {ELASTICSEARCH_INDEX}")
+                message = f"Index not found: {ELASTICSEARCH_INDEX}"
+
+            logging.error(message)
 
             return Response(
-                {"msg": "Error fetching logs"},
+                {"msg": message},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 

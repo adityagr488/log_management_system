@@ -46,7 +46,8 @@ function clearResponse() {
 
 function executeQuery() {
     var query = queryEditor.getValue();
-
+    document.getElementById("responseStatus").style.display = "none";
+    document.getElementById("loadingIcon").style.display = "block";
     try {
         var parsedQuery = JSON.parse(query);
 
@@ -58,7 +59,9 @@ function executeQuery() {
             body: JSON.stringify(parsedQuery),
         })
             .then(response => {
-                document.getElementById("responseCode").innerHTML = "Response Status: " + (response.status || "");
+                document.getElementById("loadingIcon").style.display = "none";
+                document.getElementById("responseStatus").style.display = "block";
+                document.getElementById("responseStatus").innerHTML = (response.status || "");
                 return response.json();
             })
             .then(data => {

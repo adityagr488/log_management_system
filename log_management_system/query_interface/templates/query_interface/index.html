@@ -51,7 +51,11 @@
         <!-- Right Half - Response Display -->
         <div class="col-md-6">
           <div class="mt-4">
-            <h5 id="responseCode">Response Status:</h5>
+            <h5 id="responseCode" style="display: flex; align-items: center">
+              Response Status:
+              <div id="loadingIcon" class="loader"></div>
+              <div id="responseStatus" style="display: block"></div>
+            </h5>
             <div id="queryResponse" class="scrollable-half"></div>
           </div>
           <button class="btn btn-primary mt-2" onclick="clearResponse()">
