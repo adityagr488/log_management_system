@@ -7,7 +7,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Log Management System</h3>
+  <h3 align="center">
+    Log Management System
+    <a href="https://log-management-api.onrender.com/">[Live]</a>
+  </h3>
 
   <p align="center">
     An API for seamless log ingestion and retrieval, empowering users to efficiently manage and query their log data.
