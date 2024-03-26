@@ -9,7 +9,7 @@
 
   <h3 align="center">
     Log Management System
-    <a href="https://log-management-api.onrender.com/">[Live]</a>
+    <a href="https://log-management.onrender.com/">[Live]</a>
   </h3>
 
   <p align="center">
